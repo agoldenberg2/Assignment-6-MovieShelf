@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
-function Header() {
+function Header({ onSearch }) {
+const [searchQuery, setSearchQuery] = useState('');
+
   return (
     <header className="header">
       <div className="header-content">
@@ -14,8 +17,15 @@ function Header() {
             type="text" 
             placeholder="Search movies..."
             className="search-input"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="search-button">Search</button>
+          <button 
+          className="search-button"
+          onClick={() => onSearch(searchQuery)}
+          >
+            Search
+            </button>
         </div>
       </div>
     </header>

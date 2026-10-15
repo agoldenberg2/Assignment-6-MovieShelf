@@ -1,8 +1,13 @@
 import MovieGrid from '../components/MovieGrid';
+import { useState } from 'react';
 
 function Favorites() {
+  const [favoriteMovies, setFavoriteMovies] = useState(() => {
+  const savedMovies = localStorage.getItem('favorites');
+  return savedMovies ? JSON.parse(savedMovies) : [];
+});
   // Placeholder - students will implement localStorage retrieval
-  const favoriteMovies = [];
+
 
   return (
     <main className="main-content">
